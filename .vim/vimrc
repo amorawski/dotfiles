@@ -1,13 +1,18 @@
 "###### vim-plug ######
 call plug#begin('~/.vim/plugged')
 
-Plug 'morhetz/gruvbox'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'schickling/vim-bufonly'
 " display trailing whitespace
 Plug 'ntpeters/vim-better-whitespace'
 " syntax highlighting
 Plug 'sheerun/vim-polyglot'
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'jparise/vim-graphql'
+Plug 'elixir-editors/vim-elixir'
 " searching
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -16,12 +21,10 @@ Plug 'christoomey/vim-tmux-navigator'
 " easy commenting
 Plug 'tomtom/tcomment_vim'
 " line with opened buffers
-" Plug 'ap/vim-buftabline'
 Plug 'zefei/vim-wintabs'
 " manage surrounding tags better
 Plug 'tpope/vim-surround'
 " display indent guides
-" Plug 'nathanaelkane/vim-indent-guides'
 Plug 'Yggdroot/indentLine'
 " completer
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -31,11 +34,18 @@ Plug 'junegunn/goyo.vim'
 " Gblame
 Plug 'tpope/vim-fugitive'
 " Theme
+Plug 'morhetz/gruvbox'
+Plug 'frenzyexists/aquarium-vim', { 'branch': 'develop' }
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'guns/xterm-color-table.vim'
 " Repeat tpope plugins with 'dot'
 Plug 'tpope/vim-repeat'
 Plug 'dhruvasagar/vim-table-mode'
+Plug 'bkad/CamelCaseMotion'
+
+Plug 'godlygeek/tabular'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
 call plug#end()
 "###### vim-plug ######
@@ -69,7 +79,7 @@ set undolevels=1000
 set history=1000
 set nobackup
 set noswapfile
-set clipboard=unnamed
+set clipboard=unnamedplus
 set nocompatible
 set autoread
 set splitbelow
@@ -94,7 +104,7 @@ set termguicolors
 "set t_Co=256
 "set term=screen-256color
 "let g:dracula_italic = 0
-silent! colorscheme dracula
+colorscheme dracula
 "set background=dark
 "###### UI #####
 
@@ -152,3 +162,7 @@ let g:wintabs_ui_active_right = ']'
 let g:wintabs_ui_sep_leftmost = ''
 let g:wintabs_ui_sep_inbetween = ''
 let g:wintabs_ui_sep_rightmost = ''
+
+au BufRead,BufNewFile *.ex,*.exs set filetype=elixir
+au BufRead,BufNewFile *.eex,*.heex,*.leex,*.sface,*.lexs set filetype=eelixir
+au BufRead,BufNewFile mix.lock set filetype=elixir
