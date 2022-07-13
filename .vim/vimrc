@@ -104,7 +104,7 @@ set termguicolors
 "set t_Co=256
 "set term=screen-256color
 "let g:dracula_italic = 0
-colorscheme dracula
+silent! colorscheme dracula
 "set background=dark
 "###### UI #####
 
